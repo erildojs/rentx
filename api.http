@@ -1,0 +1,128 @@
+POST http://localhost:3333/categories
+content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcxNDA2NTEsImV4cCI6MTcwNzE0MTU1MSwic3ViIjoiNGVlNTVkOGEtZjQ5Ni00MGQyLWEwM2ItZjljN2M3NDk3NGI2In0.0VQzLp3dQ_LUDFctt-ECgebP8I3jRliq7v1kp0ZU_FQ
+
+{
+  "name": "name",
+  "description": "descricao test2"
+}
+
+####
+GET http://localhost:3333/categories
+content-Type: application/json
+
+####
+POST http://localhost:3333/categories/import
+content-Type: application/json
+
+{
+  "name": "specification test",
+  "description": "description test"
+}
+
+####
+POST http://localhost:3333/specifications
+content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHJlbnR4LmNvbSIsImlhdCI6MTcwNjQzMTQ5NCwiZXhwIjoxNzA5MDIzNDk0LCJzdWIiOiI0ZWU1NWQ4YS1mNDk2LTQwZDItYTAzYi1mOWM3Yzc0OTc0YjYifQ.5VCQRsM4e83vALG9dwm3t9MnHia0ekMn2ysyL15L2vI
+
+{
+  "name": "specification test",
+  "description": "description test"
+}
+
+####
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "email": "admin@rentx.com",
+  "password": "admin",
+  "driver_license": "123456"
+}
+
+####
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+  "email": "admin@rentx.com",
+  "password": "admin"
+}
+
+####
+PATCH  http://localhost:3333/users/avatar
+# Content-Type: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTgzOTY5NjMsImV4cCI6MTY5ODQ4MzM2Mywic3ViIjoiNjI0NWZmOGYtMTRjNS00MWNhLWIwNmYtMzFjNTVkNWMxYzE4In0.DBrEbO4FNbrTDtizQv6A6dvdh-XxWMlSawtC6pVVlF0
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="ava.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\ERILDO FRANCISCO\Desktop\ava.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+POST http://localhost:3333/cars
+Content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDY5MDgwMjgsImV4cCI6MTcwNjkwODkyOCwic3ViIjoiZTY1MTg5MGUtZTIwNC00MDE4LTgzNzUtODQwYmMyMWRhOGNjIn0.2Ic5s6J296IC1G_yTrMvhgviQhFdr4UjHGwSXn0pAUM
+
+{
+  "name": "Audi A4",
+  "description": "carro bonito",
+  "daily_rate": "15000",
+  "license_plate": "DEF-1234",
+  "fine_amount": "3000",
+  "brand": "Audi",
+  "category_id": "5ec5465f-27ff-49fd-bcf7-78c29ce6f5f6"
+}
+
+###
+GET http://localhost:3333/cars/available?
+content-Type: application/json
+
+###
+POST http://localhost:3333/rentals
+Content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDY5MDgwMjgsImV4cCI6MTcwNjkwODkyOCwic3ViIjoiZTY1MTg5MGUtZTIwNC00MDE4LTgzNzUtODQwYmMyMWRhOGNjIn0.2Ic5s6J296IC1G_yTrMvhgviQhFdr4UjHGwSXn0pAUM
+
+{
+  "spected_return_date": "2024-02-03T22:10:00.295Z",
+  "car_id": "3c94cbe0-f7b1-4ec9-96d6-74f67006f7ff"
+}
+
+###
+GET http://localhost:3333/rentals/user
+Content-Type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDYxNzk1MTIsImV4cCI6MTcwNjI2NTkxMiwic3ViIjoiZTY1MTg5MGUtZTIwNC00MDE4LTgzNzUtODQwYmMyMWRhOGNjIn0.x7KgldsrnaTGexQ2kjQlAF80gQ75Cot6ZfTb6lrZmgI
+
+###
+POST http://localhost:3333/rentals/devolution/1f2e6bc0-5e89-4f0e-b821-67010ee184e4
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDYxNzk1MTIsImV4cCI6MTcwNjI2NTkxMiwic3ViIjoiZTY1MTg5MGUtZTIwNC00MDE4LTgzNzUtODQwYmMyMWRhOGNjIn0.x7KgldsrnaTGexQ2kjQlAF80gQ75Cot6ZfTb6lrZmgI
+
+###
+POST http://localhost:3333/refresh-token
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHJlbnR4LmNvbSIsImlhdCI6MTcwNjQzMTQ2OSwiZXhwIjoxNzA5MDIzNDY5LCJzdWIiOiI0ZWU1NWQ4YS1mNDk2LTQwZDItYTAzYi1mOWM3Yzc0OTc0YjYifQ.Drcgk9-mJE0PsgjpZq6KF4r3zmefWgRNmcz8kePksAs"
+}
+
+###
+POST http://localhost:3333/password/forgot
+Content-Type: application/json
+
+{
+  "email": "test@gmail.com"
+}
+
+###
+POST http://localhost:3333/password/reset?token=7a671bae-288a-4957-a6ee-65af794025df
+Content-Type: application/json
+
+{
+  "password": "12345678"
+}
+
+

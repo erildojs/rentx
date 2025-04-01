@@ -20,6 +20,7 @@ services:
       - 3333:3333
     volumes:
       - .:/usr/app
+    restart: always
     # network_mode: host
 
 volumes:

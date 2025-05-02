@@ -5,6 +5,7 @@ import { ICreateUsersDTO } from "@modules/accounts/dtos/ICreateUsersDTO"
 import { AppError } from "@shared/errors/AppError"
 import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersTokensRepositoryInMemory"
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let authenticateUserUseCase: AuthenticateUserUseCase
 let usersRepositoryInMemory: UsersRepositoryInMemory

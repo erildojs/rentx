@@ -4,6 +4,7 @@ import createConnection from '@shared/infra/typeorm'
 import { Connection } from "typeorm"
 import {v4 as uuidV4} from 'uuid'
 import { hash } from "bcryptjs"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let connection: Connection
 

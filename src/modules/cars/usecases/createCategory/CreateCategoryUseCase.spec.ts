@@ -1,6 +1,7 @@
 import { CategoriesRepositoriesInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoriesInMemory"
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase"
 import { AppError } from "@shared/errors/AppError"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let createCategoryUseCase: CreateCategoryUseCase
 let categoriesRepositoryInMemory: CategoriesRepositoriesInMemory

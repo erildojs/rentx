@@ -4,6 +4,7 @@ import { UsersTokensRepositoryInMemory } from "@modules/accounts/repositories/in
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider"
 import { MailProviderInMemory } from "@shared/container/providers/MailProvider/in-memory/MailProviderInMemory"
 import { AppError } from "@shared/errors/AppError"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let sendForgotPasswordMailUseCase: SendForgotPasswordMailUseCase
 let usersRepositoryInMemory: UsersRepositoryInMemory

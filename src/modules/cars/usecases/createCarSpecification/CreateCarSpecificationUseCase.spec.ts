@@ -2,6 +2,7 @@ import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/Car
 import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase"
 import { AppError } from "@shared/errors/AppError"
 import { SpecificationsRepositoriesInMemory } from "@modules/cars/repositories/in-memory/SpecificationsRepositoriesInMemory"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase
 let carsRepositoryInMemory: CarsRepositoryInMemory

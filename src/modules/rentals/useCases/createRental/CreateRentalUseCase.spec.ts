@@ -4,6 +4,7 @@ import { AppError } from "@shared/errors/AppError"
 import dayjs from "dayjs"
 import { DayjsDateProvider } from "@shared/container/providers/DateProvider/implementations/DayjsDateProvider"
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let createRentalUseCase: CreateRentalUseCase
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory

@@ -23,6 +23,9 @@
         "utils/*"
       ]
     },
+        "types": [
+          "vitest"
+    ],
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

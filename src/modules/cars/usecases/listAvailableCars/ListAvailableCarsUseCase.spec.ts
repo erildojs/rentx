@@ -1,5 +1,6 @@
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory"
 import { ListAvailableCarsUseCase } from "./ListAvailableCarsUseCase"
+import { afterAll, beforeAll, describe, expect, it, beforeEach } from "vitest"
 
 let listAvailableCarsUseCase: ListAvailableCarsUseCase
 let carsRepositoryInMemory: CarsRepositoryInMemory

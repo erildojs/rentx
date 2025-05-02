@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "ty": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "test": "NODE_ENV=test vitest",
+    "test": "vitest",
     "sa": "tsnd -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
   },
   "keywords": [
@@ -29,6 +29,7 @@
     "nodemailer": "^6.10.0",
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.1",
+    "sqlite3": "^5.1.7",
     "swagger-ui-express": "^5.0.1",
     "tsyringe": "^4.8.0",
     "typeorm": "^0.2.31",

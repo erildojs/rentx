@@ -2,12 +2,11 @@ services:
   database:
     image: postgres
     container_name: db_rentx
-    restart: always
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=rentx
     volumes:
       - pgdata:/data/postgres

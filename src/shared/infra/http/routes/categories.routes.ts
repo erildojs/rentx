@@ -1,4 +1,3 @@
-
 import { CreateCategoryController } from '@modules/cars/usecases/createCategory/CreateCategoryController'
 import { ImportCategoryController } from '@modules/cars/usecases/importCategory/ImportCategoryController'
 import { Router } from 'express'

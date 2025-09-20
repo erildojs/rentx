@@ -11,19 +11,16 @@ class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
     async findByUserIdAndRefreshToken(user_id: string, refresh_token: string): Promise<UsersTokens | undefined> {
         const userToken = this.usersTokens.find((userToken) => userToken.user_id === user_id && userToken.refresh_token === refresh_token)
         return userToken
-        
     }
 
     async deleteById(id: string): Promise<void> {
         const userToken = this.usersTokens.find((userToken) => userToken.id)
         this.usersTokens.splice(this.usersTokens.indexOf(userToken!))
-        
     }
 
     async findByRefreshToken(refresh_token: string): Promise<UsersTokens | undefined> {
         const userToken = this.usersTokens.find((userToken) => userToken.refresh_token === refresh_token)
         return userToken
-
     }
 
     async create({expires_date, refresh_token, user_id}: ICreateUsersTokensDTO): Promise<UsersTokens> {

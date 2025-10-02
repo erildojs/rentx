@@ -1,5 +1,5 @@
 TN:
-SF:src/modules/rentals/useCases/createRental/CreateRentalController.ts
+SF:src\modules\rentals\useCases\createRental\CreateRentalController.ts
 FN:6,handle
 FNF:1
 FNH:0
@@ -27,7 +27,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/modules/rentals/useCases/createRental/CreateRentalUseCase.ts
+SF:src\modules\rentals\useCases\createRental\CreateRentalUseCase.ts
 FN:17,CreateRentalUseCase
 FN:25,execute
 FNF:2
@@ -91,7 +91,7 @@ BRF:7
 BRH:7
 end_of_record
 TN:
-SF:src/modules/rentals/useCases/devolutionRental/DevolutionRentalController.ts
+SF:src\modules\rentals\useCases\devolutionRental\DevolutionRentalController.ts
 FN:6,handle
 FNF:1
 FNH:0
@@ -119,7 +119,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/modules/rentals/useCases/devolutionRental/DevolutionRentalUseCase.ts
+SF:src\modules\rentals\useCases\devolutionRental\DevolutionRentalUseCase.ts
 FN:15,DevolutionRentalUseCase
 FN:24,execute
 FNF:2
@@ -185,7 +185,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/modules/rentals/useCases/listRentalsByUser/ListRentalsByUserController.ts
+SF:src\modules\rentals\useCases\listRentalsByUser\ListRentalsByUserController.ts
 FN:6,handle
 FNF:1
 FNH:0
@@ -210,7 +210,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/modules/rentals/useCases/listRentalsByUser/ListRentalsByUserUseCase.ts
+SF:src\modules\rentals\useCases\listRentalsByUser\ListRentalsByUserUseCase.ts
 FN:7,ListRentalsByUserUseCase
 FN:12,execute
 FNF:2

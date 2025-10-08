@@ -1,118 +1,100 @@
-<!-- **Requisitos funcionais**
-  sao as funcionalidades que a app vai ter, ex: cadastrar uma categoria
+## RentX — API de aluguel de carros
 
-**Requisitos nao funcionais**
-  Nao estao ligados directamente com a regra de negocio da app, ex: qual lib usar, qual banco de dados...
+API REST construída com Node.js, TypeScript, Express, TypeORM e injeção de dependências com tsyringe. Autenticação com JWT (token e refresh token), upload, envio de e-mails e documentação via Swagger.
 
-**Regra de negocio**
-  regras que eu espero , por traz do requisitos funcionais, ex: nao deve ser possivel cadastrar uma categoria ja existente... -->
+### Tecnologias
+- **Runtime**: Node.js, TypeScript
+- **Web**: Express, express-async-errors, Swagger UI
+- **ORM**: TypeORM (PostgreSQL)
+- **DI**: tsyringe
+- **Auth**: JWT + Refresh Token
+- **Utilitários**: multer, dayjs, class-transformer
+- **Testes**: Jest, Supertest
 
-# Cadastro de carro 
+### Requisitos
+- Node.js (LTS)
+- Yarn ou NPM
+- PostgreSQL (local) ou Docker/Docker Compose
 
-**RF**
+### Configuração do Banco
+Por padrão (arquivo `ormconfig.json`):
+- host: `localhost`
+- port: `5432`
+- username: `admin`
+- password: `123`
+- database: `rentx`
 
-- [✅] Deve ser possivel cadastrar um novo carro
-- [✅] Deve ser possivel listar todas as categorias.
+Você pode ajustar conforme necessário no `ormconfig.json`.
 
-**RN**
+### Rodando com Docker
+1. Suba os serviços:
+```bash
+docker-compose up -d --build
+```
+2. A API ficará disponível em `http://localhost:3333`.
 
-- [✅] Nao deve ser possivel cadastrar um carro com uma placa ja existente.
-- [✅] Nao deve ser possivel alterar a placa de um carro ja cadastrado.
-- [✅] O carro deve ser cadastrado por padrao com disponibilidade.
-- [✅] O usuario responsavel pelo cadastro deve ser um usuario administrador. 
+### Rodando localmente (sem Docker)
+1. Instale dependências:
+```bash
+npm install
+# ou
+yarn
+```
+2. Garanta que o PostgreSQL esteja executando e acessível conforme `ormconfig.json`.
+3. Rode as migrations (se aplicável, via TypeORM CLI usando ts-node-dev):
+```bash
+npm run ty migration:run
+# ou
+yarn ty migration:run
+```
+4. Inicie o servidor em modo desenvolvimento:
+```bash
+npm run dev
+# ou
+yarn dev
+```
 
-# Listagem de carros
+### Scripts principais
+- `dev`: inicia o servidor com ts-node-dev em `src/shared/infra/http/server.ts`.
+- `ty`: executa a CLI do TypeORM com ts-node-dev (ex.: `yarn ty migration:run`).
+- `test`: executa a suíte de testes (Jest).
+- `sa`: roda a seed de admin (se existir em `src/shared/infra/typeorm/seed/admin.ts`).
 
-**RF**
+### Testes
+Execute:
+```bash
+npm test
+# ou
+yarn test
+```
 
-- [✅] Deve ser possivel listar todos os carros disponiveis.
-- [✅] Deve ser possivel listar todos os carros disponiveis pelo nome da categoria.
-- [✅] Deve ser possivel listar todos os carros disponiveis pelo nome da marca.
-- [✅] Deve ser possivel listar todos os carros disponiveis pelo nome do carro.
+### Documentação (Swagger)
+Após iniciar a API, acesse a documentação em:
+- `http://localhost:3333/api-docs`
 
-**RN** 
+### Autenticação
+Configurações em `src/config/auth.ts`:
+- `secret_token`, `expires_in_token`
+- `secret_refresh_token`, `expires_in_refresh_token`, `expires_refresh_token_days`
 
-- [✅] O usuario nao precisa estar logado no sistema.
+Fluxo de login: geração de `token` (acesso) e `refresh_token` persistido, com renovação via endpoint de refresh.
 
-# Cadastro de especificacao no carro
+### Convenções e Arquitetura
+- Resolução de paths do TypeScript configurada em `tsconfig.json` (aliases como `@modules/*`, `@shared/*`, `@config/*`).
+- Container de IoC em `@shared/container` para registrar implementações dos repositórios e provedores.
+- Migrations localizadas em `src/shared/infra/typeorm/migrations`.
 
-**RF**
+### Variáveis de Ambiente (opcional)
+Você pode utilizar `.env` (biblioteca `dotenv`) para parametrizar credenciais e URLs. Ajuste arquivos de configuração conforme necessário.
 
-- [✅] Deve ser possivel cadastrar uma especificacao para um carro.
-- [✅] Deve ser possivel listar todas as especificacaoes.
-- [✅] Deve ser possivel listar todos os carros
+### Endpoints
+- Consulte o Swagger em `/api-docs` para a lista completa de rotas, parâmetros e exemplos.
 
-**RN**
+### Troubleshooting
+- Erros com decorators/DI em testes: garanta que `reflect-metadata` seja carregado no ambiente de testes e que o Jest esteja usando o `tsconfig.json` do projeto.
+- Conexão com o banco: verifique credenciais do PostgreSQL e se as migrations foram executadas.
 
-- [✅] Nao deve ser possivel cadastrar uma especificacao para um carro inexistente.
-- [✅] Nao deve ser possivel cadastrar uma especificacao ja existente para o mesmo carro. 
-- [✅] O usuario responsavel pelo cadastro deve ser um usuario administrador. 
+### Licença
+ISC — veja o arquivo `LICENSE` (se aplicável).
 
-# Cadastro de imagens do carro
 
-**RF**
-
-- [✅] Deve ser possivel cadastrar a imagem do carro.
-- [✅] Deve ser possivel listar todos os carros.
-
-**RNF**
-
-- [✅] Utilizar o multer para upload de arquivos localmente.
-
-**RN**
-
-- [✅] O usuario deve poder cadastrar mais de uma imagem para o mesmo carro.
-- [✅] O usuario responsavel pelo cadastro deve ser um usuario administrador. 
-        
-# Alugel de carro
-
-**RF**
-
-- [✅] Deve ser possivel cadastrar um aluguel.
-
-**RN**
-
-- [✅] O aluguel deve ter duracao minima de 24h.
-- [✅] Nao deve ser possivel cadastrar um novo luguel caso ja exista um aberto para o mesmo usuario.
-- [✅] Nao deve ser possivel cadastrar um novo luguel caso ja exista um aberto para o mesmo carro.
-- [✅] Ao realizar um aluguel o status do carro devera ser alterado para indisponivel
-
-# Devolucao de Carro
-
-**RF**
-
-- [✅] Deve ser possivel realizar a devolucao de um carro
-
-**RN**
-
-- [✅] Se o caro for devolvido com menos de 24 horas, devera ser cobrado diaria completa  
-- [✅] Ao realizar a devolucao, o carro deve ser liberado para outro aluguel
-- [✅] Ao realizar a devolucao, o usuario deve ser liberado para outro aluguel
-- [✅] Ao realizar a devolucao, devera ser calculado o total do aluguel
-- [✅] Caso o horario de devolucao seja superior ao horario previsto de entrega, devera ser cobrado multa proporcional aos dias de atrazo
-- [✅] Caso haja multa,  devera ser somado ao total do aluguel
-- [✅] O usuario deve estar logado na aplicacao.
-
-# Listagem de alugueis para usuario
-
-**RF**
-
-- [✅] Deve ser possivel realizar a busca de todos os alugueis de um usuario
-
-**RN**
-
-- [✅] O usuario deve estar logado na aplicacao  
-
-# Recuperacao de senha
-
-**RF**
-
-- [✅] Deve ser possivel o usuario recuperar a senha informando o email
-- [✅] O usuario deve receber um email, com o passo a passo para a recuperacao da senha
-- [✅] O usuario deve conseguir inserir uma nova senha
-
-**RN**
-
-- [✅] O usuario precisa informar uma nova senha
-- [✅] O link enviado para a recuperacao deve expirar em 3 horas   
-# rentx
